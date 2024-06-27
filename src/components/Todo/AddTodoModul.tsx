@@ -1,3 +1,4 @@
+import { FormEvent, useState } from "react";
 import { Button } from "../ui/button";
 import {
   Dialog,
@@ -13,11 +14,23 @@ import { Label } from "../ui/label";
 import { Select, SelectContent, SelectGroup, SelectItem, SelectLabel, SelectTrigger, SelectValue } from "../ui/select";
 
 const AddTodoModule = () => {
+  
+  const [task, setTask] = useState('');
+  const [description, setDescription] = useState('');
+  const [priority, setPriority] = useState('');
+
+  
+const onSubmit = (e: FormEvent) => {
+  e.preventDefault();
+  console.log(task, description, priority,);
+};
+
+
   return (
     <Dialog>
     <DialogTrigger asChild>
       <Button className="bg-primary-gradient text-xl font-semibold">
-        add todo{" "}
+        Add Todo{" "}
       </Button>
     </DialogTrigger>
     <DialogContent className="sm:max-w-[425px]">
