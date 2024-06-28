@@ -35,8 +35,9 @@ const onSubmit = (e: FormEvent) => {
   
   const taskDetails = {
     title:task,
-    description: description,
-    priority: priority,
+    description,
+    priority,
+    isCompeted:false
   }
   addTodo(taskDetails);
   // console.log(taskDetails);

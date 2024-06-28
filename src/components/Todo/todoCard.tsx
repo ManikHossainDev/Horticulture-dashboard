@@ -17,7 +17,7 @@ const TodoCard = ({ title, description, id, isCompleted,  }: TTodoCardProps) => 
   return (
     <div className="bg-white rounded-md border flex justify-between items-center p-3">
       <input
-        onClick={toggleState}
+        onChange={toggleState}
         type="checkbox"
         name="complete"
         id="complete"
