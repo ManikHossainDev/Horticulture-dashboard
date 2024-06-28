@@ -12,17 +12,25 @@ import {
 import { Input } from "../ui/input";
 import { Label } from "../ui/label";
 import { Select, SelectContent, SelectGroup, SelectItem, SelectLabel, SelectTrigger, SelectValue } from "../ui/select";
+import { useAppDispatch } from "@/redux/hook";
+import { addTodo } from "@/redux/features/todoSlice";
 
 const AddTodoModule = () => {
   
   const [task, setTask] = useState('');
   const [description, setDescription] = useState('');
   const [priority, setPriority] = useState('');
+  const dispatch  = useAppDispatch()
 
   
 const onSubmit = (e: FormEvent) => {
   e.preventDefault();
-  console.log(task, description, priority,);
+  const taskDetails = {
+    title:task,
+    description: description,
+    priority: priority,
+  }
+  dispatch(addTodo(taskDetails));
 };
 
 
