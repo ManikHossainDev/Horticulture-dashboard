@@ -14,26 +14,33 @@ import { Label } from "../ui/label";
 import { Select, SelectContent, SelectGroup, SelectItem, SelectLabel, SelectTrigger, SelectValue } from "../ui/select";
 import { useAppDispatch, } from "@/redux/hook";
 import { addTodo } from "@/redux/features/todoSlice";
+import { useCreateTodoMutation } from "@/redux/api/api";
 
 const AddTodoModule = () => {
   
   const [task, setTask] = useState('');
   const [description, setDescription] = useState('');
-  // const [priority, setPriority] = useState('');
-  const dispatch  = useAppDispatch()
+  const [priority, setPriority] = useState('');
+  // const dispatch  = useAppDispatch()
+
+  const [addTodo, {isError, isLoading, isSuccess}] = useCreateTodoMutation()
+
   
 
   
 const onSubmit = (e: FormEvent) => {
   e.preventDefault();
-  const randomString = Math.random().toString(36).substring(2, 7 ) ;
+
+  // const randomString = Math.random().toString(36).substring(2, 7) ;
+  
   const taskDetails = {
-    id:randomString,
     title:task,
     description: description,
-    // priority: priority,
+    priority: priority,
   }
-  dispatch(addTodo(taskDetails));
+  addTodo(taskDetails);
+  // console.log(taskDetails);
+  // dispatch(addTodo(taskDetails));
 };
 
 
